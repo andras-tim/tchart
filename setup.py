@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
@@ -22,6 +23,10 @@ class PyTest(TestCommand):
         sys.exit(exit_code)
 
 
+def read(*path):
+    return open(os.path.join(os.path.dirname(__file__), *path)).read()
+
+
 setup(
     name='tchart',
     version='1.0.0',
@@ -30,6 +35,7 @@ setup(
     author='Andras Tim',
     author_email='andras.tim@gmail.com',
     description='Minimal graph renderer for fixed size canvas',
+    long_description=read('README.rst'),
 
     classifiers=[
         "Development Status :: 5 - Production/Stable",
