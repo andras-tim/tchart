@@ -50,7 +50,10 @@ setup(
         'numpy',
     ],
     tests_require=[
-        'pytest'
+        'pytest>=2.6.4',
+        'pytest-cache>=1.0',
+        'pytest-cov>=1.8.1',
+        'pytest-pep8>=1.0.6',
     ],
 
     packages=find_packages(exclude=['tests']),

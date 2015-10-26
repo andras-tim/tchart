@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - added example screenshots
 - enhanced readme with usage, badges and screenshots
+- improved test environment
 
 
 ## 1.0.0 - 2015-10-20
