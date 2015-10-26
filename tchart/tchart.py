@@ -94,36 +94,15 @@ class DataManipulation:
 
     @classmethod
     def horizontal_scale_values(cls, values: list, new_width: int) -> list:
-        if len(values) >= new_width:
-            return cls._horizontal_down_scale_values(values, new_width)
-        return cls._horizontal_up_scale_values(values, new_width)
-
-    @classmethod
-    def _horizontal_down_scale_values(cls, values: list, new_width: int) -> list:
         if new_width == 0:
             return []
+        if new_width == 1:
+            return [numpy.mean(values)]
 
-        result = []
-        scale = new_width / len(values)
-
-        source_x = 0
-        while source_x < len(values):
-            scale_sum = 0.0
-            value_sum = 0
-            value_count = 0
-
-            while scale_sum < 1.0 and source_x < len(values):
-                value_sum += values[source_x]
-                value_count += 1
-                source_x += 1
-                scale_sum += scale
-
-            result.append(value_sum / value_count)
-
-        return result
+        return cls._horizontal_scale_values_with_interpolation(values, new_width)
 
     @classmethod
-    def _horizontal_up_scale_values(cls, values: list, new_width: int) -> list:
+    def _horizontal_scale_values_with_interpolation(cls, values: list, new_width: int) -> list:
         old_point_count = len(values)
         if old_point_count == new_width:
             return values

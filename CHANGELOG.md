@@ -9,6 +9,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - enhanced readme with usage, badges and screenshots
 - improved test environment
 
+### Fixed
+- horizontal scaling works bad in some cases #1
+
 
 ## 1.0.0 - 2015-10-20
 ### Added

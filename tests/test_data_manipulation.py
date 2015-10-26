@@ -15,8 +15,9 @@ class TestDataManipulation:
     def test_horizontal_scale_values(self):
         h_scale = DataManipulation.horizontal_scale_values
 
+        assert h_scale([0, 1, 2, 3, 4, 5], 5) == [0.0, 1.25, 2.5, 3.75, 5.0]
         assert h_scale([0, 1, 2, 3], 4) == [0, 1, 2, 3]
-        assert h_scale([0, 1, 2, 3], 2) == [0.5, 2.5]
+        assert h_scale([0, 1, 2, 3], 2) == [0, 3]
         assert h_scale([0, 1, 2, 3], 1) == [1.5]
         assert h_scale([0, 1, 2, 3], 0) == []
 
