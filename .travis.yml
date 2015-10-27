@@ -21,6 +21,8 @@ cache:
     - $HOME/.cache/pip
 
 before_install:
+  - pip install --upgrade pip setuptools
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.2' ]]; then pip install 'coverage<4.0.0'; fi
   - pip install coveralls
 
 install:
