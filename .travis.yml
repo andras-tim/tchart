@@ -21,6 +21,7 @@ cache:
     - $HOME/.cache/pip
 
 before_install:
+  - pip install --upgrade pip setuptools
   - pip install coveralls
 
 install:

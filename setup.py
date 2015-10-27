@@ -10,12 +10,10 @@ class PyTest(TestCommand):
 
     def initialize_options(self):
         super().initialize_options()
-        self.pytest_args = []
+        self.pytest_args = ''
 
     def finalize_options(self):
-        super().finalize_options()
-        self.test_args = []
-        self.test_suite = True
+        pass
 
     def run_tests(self):
         import pytest
