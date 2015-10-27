@@ -27,7 +27,7 @@ def read(*path):
 
 setup(
     name='tchart',
-    version='1.0.0',
+    version='1.0.1',
     url='https://github.com/andras-tim/tchart',
     license='GPLv2',
     author='Andras Tim',
