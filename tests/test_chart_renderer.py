@@ -1,8 +1,17 @@
 # -*- coding: UTF-8 -*-
+import pytest
 from tchart.tchart import ChartRenderer
 
 
 class TestChartRenderer:
+    def test_can_create_render_instance(self):
+        assert ChartRenderer()
+
+    def test_can_not_create_1x1_renderer(self):
+        with pytest.raises(Exception) as excinfo:
+            ChartRenderer(height=1, width=1)
+        assert str(excinfo.value) == 'Bad dimension; min 2x2'
+
     def test_render_without_data(self):
         r = ChartRenderer(height=4, width=15)
         data = []
