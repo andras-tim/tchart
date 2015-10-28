@@ -7,10 +7,14 @@ from setuptools.command.test import test as TestCommand
 
 class PyTest(TestCommand):
     user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
+    test_args = None
+    test_suite = None
 
     def initialize_options(self):
         super().initialize_options()
         self.pytest_args = ''
+        self.test_args = []
+        self.test_suite = True
 
     def finalize_options(self):
         pass
