@@ -22,7 +22,8 @@ class PyTest(TestCommand):
 
 
 def read(*path):
-    return open(os.path.join(os.path.dirname(__file__), *path)).read()
+    with open(os.path.join(os.path.dirname(__file__), *path)) as fd:
+        return fd.read()
 
 
 setup(
@@ -44,15 +45,8 @@ setup(
     ],
     keywords='chart bar barchart',
 
-    install_requires=[
-        'numpy',
-    ],
-    tests_require=[
-        'pytest>=2.6.4',
-        'pytest-cache>=1.0',
-        'pytest-cov>=1.8.1',
-        'pytest-pep8>=1.0.6',
-    ],
+    install_requires=read('requirements.txt').splitlines(),
+    tests_require=read('requirements-dev.txt').splitlines(),
 
     packages=find_packages(exclude=['tests']),
     cmdclass={
