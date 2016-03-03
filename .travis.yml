@@ -21,9 +21,12 @@ cache:
     - $HOME/.cache/pip
 
 before_install:
-  - pip install --upgrade pip setuptools
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.2' ]]; then pip install 'coverage<4.0.0'; fi
-  - pip install coveralls
+  - case ${TRAVIS_PYTHON_VERSION} in
+      3.2) pip install --upgrade pip\<8 setuptools coveralls coverage\<4
+           ;;
+      *)   pip install --upgrade pip setuptools coveralls
+           ;;
+    esac
 
 install:
   - python setup.py install
