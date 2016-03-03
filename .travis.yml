@@ -1,5 +1,8 @@
 sudo: false
 language: python
+os:
+  - linux
+  - osx
 python:
   - 3.2
   - 3.4
@@ -8,6 +11,7 @@ python:
   - nightly
 matrix:
   allow_failures:
+    - os: osx
     - python: 3.5-dev
     - python: nightly
 
@@ -21,9 +25,12 @@ cache:
     - $HOME/.cache/pip
 
 before_install:
-  - pip install --upgrade pip setuptools
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.2' ]]; then pip install 'coverage<4.0.0'; fi
-  - pip install coveralls
+  - case ${TRAVIS_PYTHON_VERSION} in
+      3.2) pip install --upgrade pip\<8 setuptools wheel coveralls coverage\<4
+           ;;
+      *)   pip install --upgrade pip setuptools wheel coveralls
+           ;;
+    esac
 
 install:
   - python setup.py install

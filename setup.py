@@ -37,6 +37,7 @@ setup(
     license='GPLv2',
     author='Andras Tim',
     author_email='andras.tim@gmail.com',
+    platforms='any',
     description='Minimal graph renderer for fixed size canvas',
     long_description=read('README.rst'),
 
