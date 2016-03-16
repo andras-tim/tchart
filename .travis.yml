@@ -26,9 +26,9 @@ cache:
 
 before_install:
   - case ${TRAVIS_PYTHON_VERSION} in
-      3.2) pip install --upgrade pip\<8 setuptools wheel coveralls coverage\<4
+      3.2) pip install --upgrade pip\<8 setuptools wheel coveralls coverage\<4 codacy-coverage
            ;;
-      *)   pip install --upgrade pip setuptools wheel coveralls
+      *)   pip install --upgrade pip setuptools wheel coveralls codacy-coverage
            ;;
     esac
 
@@ -40,3 +40,4 @@ script:
 
 after_success:
   - coveralls
+  - coverage xml && python-codacy-coverage -r coverage.xml
