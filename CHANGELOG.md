@@ -27,4 +27,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 [unreleased]: https://github.com/andras-tim/tchart/compare/v1.0.0...HEAD
-[1.0.1]: https://github.com/andras-tim/callrecord-renamer/compare/v1.0.0...v1.0.1
+[1.0.1]: https://github.com/andras-tim/tchart/compare/v1.0.0...v1.0.1
