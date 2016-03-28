@@ -26,9 +26,9 @@ cache:
 
 before_install:
   - case ${TRAVIS_PYTHON_VERSION} in
-      3.2) pip install --upgrade pip\<8 setuptools wheel coveralls coverage\<4 codacy-coverage
+      3.2) pip install --upgrade pip\<8 setuptools wheel coveralls coverage\<4 codacy-coverage git+git://github.com/andras-tim/pytest-pylint
            ;;
-      *)   pip install --upgrade pip setuptools wheel coveralls codacy-coverage
+      *)   pip install --upgrade pip setuptools wheel coveralls codacy-coverage git+git://github.com/andras-tim/pytest-pylint
            ;;
     esac
 
