@@ -56,7 +56,7 @@ Bugs or suggestions? Visit the `issue tracker <https://github.com/andras-tim/tch
 .. |PyPi| image:: https://img.shields.io/pypi/dm/tchart.svg
    :target: https://pypi.python.org/pypi/tchart
    :alt: Python Package
-.. |License| image:: https://img.shields.io/badge/license-GPL%202.0-blue.svg
+.. |License| image:: https://img.shields.io/badge/license-GPL%203.0-blue.svg
    :target: https://github.com/andras-tim/tchart/blob/master/LICENSE
    :alt: License
 

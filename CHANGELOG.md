@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 ### Changed
+- changed license from GPLv2 to GPLv3
 - small deployment & testing related changes
 
 
