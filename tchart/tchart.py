@@ -31,7 +31,7 @@ class ChartRenderer(object):
         self._horizontal_offset = len(self.BORDER['horizontal'])
 
         if height <= self._vertical_offset or width <= self._horizontal_offset:
-            raise Exception('Bad dimension; min 2x2')
+            raise ValueError('Bad dimension; min 2x2')
 
         self._chart_height = height
         self._chart_width = width

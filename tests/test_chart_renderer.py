@@ -10,7 +10,7 @@ class TestChartRenderer(object):
         assert ChartRenderer()
 
     def test_can_not_create_1x1_renderer(self):
-        with pytest.raises(Exception) as excinfo:
+        with pytest.raises(ValueError) as excinfo:
             ChartRenderer(height=1, width=1)
         assert str(excinfo.value) == 'Bad dimension; min 2x2'
 
