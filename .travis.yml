@@ -36,7 +36,7 @@ install:
   - python setup.py install
 
 script:
-  - python setup.py test --pytest-args '-vv --full-trace --pep8 --cov=tchart'
+  - python setup.py test --pytest-args '-vv --full-trace --cov=tchart'
 
 after_success:
   - coveralls
