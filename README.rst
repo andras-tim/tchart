@@ -12,9 +12,6 @@ Installation
 ``pip install tchart``
 
 
-.. warning:: The Python 3.2 support will be discontinued after EOL of Ubuntu Precise.
-
-
 Usage
 -----
 

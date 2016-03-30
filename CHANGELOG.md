@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 ### Changed
+- supported Python is 3.4, 3.5 *(removed 3.2)*
 - changed license from GPLv2 to GPLv3
 - small deployment & testing related changes
 - Pylint ready code
