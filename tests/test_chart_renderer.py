@@ -5,7 +5,7 @@ import pytest
 from tchart.tchart import ChartRenderer
 
 
-class TestChartRenderer:
+class TestChartRenderer(object):
     def test_can_create_render_instance(self):
         assert ChartRenderer()
 
@@ -19,10 +19,10 @@ class TestChartRenderer:
         data = []
 
         assert r.render(data) == (
-            '│              ',
-            '│              ',
-            '│              ',
-            '┼──────────────',
+            u'│              ',
+            u'│              ',
+            u'│              ',
+            u'┼──────────────',
         )
 
     def test_render_without_any_scaling_and_shifting(self):
@@ -30,10 +30,10 @@ class TestChartRenderer:
         data = list(range(25))
 
         assert r.render(data) == (
-            '│                 ▁▂▃▄▅▆▇█',
-            '│         ▁▂▃▄▅▆▇█████████',
-            '│ ▁▂▃▄▅▆▇█████████████████',
-            '┼─────────────────────────',
+            u'│                 ▁▂▃▄▅▆▇█',
+            u'│         ▁▂▃▄▅▆▇█████████',
+            u'│ ▁▂▃▄▅▆▇█████████████████',
+            u'┼─────────────────────────',
         )
 
     def test_render_with_shifting(self):
@@ -41,10 +41,10 @@ class TestChartRenderer:
         data = list(range(-10, 15))
 
         assert r.render(data) == (
-            '│                 ▁▂▃▄▅▆▇█',
-            '│         ▁▂▃▄▅▆▇█████████',
-            '│ ▁▂▃▄▅▆▇█████████████████',
-            '┼─────────────────────────',
+            u'│                 ▁▂▃▄▅▆▇█',
+            u'│         ▁▂▃▄▅▆▇█████████',
+            u'│ ▁▂▃▄▅▆▇█████████████████',
+            u'┼─────────────────────────',
         )
 
     def test_render_with_vertical_scaling(self):
@@ -52,10 +52,10 @@ class TestChartRenderer:
         data = list(range(0, 49, 2))
 
         assert r.render(data) == (
-            '│                 ▁▂▃▄▅▆▇█',
-            '│         ▁▂▃▄▅▆▇█████████',
-            '│ ▁▂▃▄▅▆▇█████████████████',
-            '┼─────────────────────────',
+            u'│                 ▁▂▃▄▅▆▇█',
+            u'│         ▁▂▃▄▅▆▇█████████',
+            u'│ ▁▂▃▄▅▆▇█████████████████',
+            u'┼─────────────────────────',
         )
 
     def test_render_with_horizontal_down_scaling(self):
@@ -63,8 +63,8 @@ class TestChartRenderer:
         data = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
 
         assert r.render(data) == (
-            '│ ▁▂▃▄▅▆▇█',
-            '┼─────────',
+            u'│ ▁▂▃▄▅▆▇█',
+            u'┼─────────',
         )
 
     def test_render_with_horizontal_up_scaling(self):
@@ -72,8 +72,8 @@ class TestChartRenderer:
         data = [0, 2, 4, 6, 8]
 
         assert r.render(data) == (
-            '│ ▁▂▃▄▅▆▇█',
-            '┼─────────',
+            u'│ ▁▂▃▄▅▆▇█',
+            u'┼─────────',
         )
 
     def test_render_with_scaling_shifting_required_options(self):
@@ -82,10 +82,10 @@ class TestChartRenderer:
                      176.97, 83.8, 204.65, 117.37, 197.27, 43.71, 84.79])
 
         assert r.render(data) == (
-            '│ ▄█▇▇▆▅▄  ▁▄▁    ▁▁▂▃▅▅▄▃ ▃▅▃▂▄▃   ',
-            '│▆████████▃███▃  ████████████████▇▇█',
-            '│██████████████▃▇███████████████████',
-            '┼───────────────────────────────────',
+            u'│ ▄█▇▇▆▅▄  ▁▄▁    ▁▁▂▃▅▅▄▃ ▃▅▃▂▄▃   ',
+            u'│▆████████▃███▃  ████████████████▇▇█',
+            u'│██████████████▃▇███████████████████',
+            u'┼───────────────────────────────────',
         )
 
     def test_boundaries(self):

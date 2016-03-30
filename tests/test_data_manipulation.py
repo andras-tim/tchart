@@ -4,7 +4,7 @@
 from tchart.tchart import DataManipulation
 
 
-class TestDataManipulation:
+class TestDataManipulation(object):
     def test_shift_values(self):
         shift = DataManipulation.shift_values
 
