@@ -1,4 +1,6 @@
 # -*- coding: UTF-8 -*-
+# pylint: disable=misplaced-comparison-constant,redefined-outer-name,no-self-use
+
 import pytest
 from tchart.tchart import ChartRenderer
 
@@ -95,5 +97,5 @@ class TestChartRenderer:
 
                 try:
                     r.render(data)
-                except Exception as e:
+                except Exception as e:  # pylint: disable=broad-except
                     assert False, 'exception={!s}, width={}, data_count={}'.format(e, width, data_count)

@@ -1,4 +1,6 @@
 # -*- coding: UTF-8 -*-
+# pylint: disable=misplaced-comparison-constant,redefined-outer-name,no-self-use
+
 from tchart.tchart import DataManipulation
 
 

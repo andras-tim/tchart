@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - changed license from GPLv2 to GPLv3
 - small deployment & testing related changes
+- Pylint ready code
 
 
 ## [1.0.1] - 2015-10-27
