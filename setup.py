@@ -32,7 +32,7 @@ def read(*path):
 
 setup(
     name='tchart',
-    version='1.0.1',
+    version='1.1.0',
     url='https://github.com/andras-tim/tchart',
     license='GPLv3',
     author='Andras Tim',
