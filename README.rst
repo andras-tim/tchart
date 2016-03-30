@@ -3,7 +3,7 @@ tchart
 
 |PyPi| |Build| |DependencyStatus| |CodeQuality| |Coverage| |License|
 
-Minimal chart renderer for fixed size canvas for Python3.
+Minimal chart renderer for fixed size canvas for Python.
 
 
 Installation
