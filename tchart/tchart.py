@@ -1,31 +1,37 @@
 # -*- coding: UTF-8 -*-
+
+from __future__ import division
 import numpy
 
 
-class ChartRenderer:
+class ChartRenderer(object):
     BORDER = {
-        'vertical': '│',
-        'horizontal': '─',
-        'crossing': '┼'
+        'vertical': u'│',
+        'horizontal': u'─',
+        'crossing': u'┼'
     }
     BLOCK_VARIANTS = (
-        ' ',
-        '▁',
-        '▂',
-        '▃',
-        '▄',
-        '▅',
-        '▆',
-        '▇',
-        '█',
+        u' ',
+        u'▁',
+        u'▂',
+        u'▃',
+        u'▄',
+        u'▅',
+        u'▆',
+        u'▇',
+        u'█',
     )
 
-    def __init__(self, height: int=5, width: int=10):
+    def __init__(self, height=5, width=10):
+        """
+        :type height: int
+        :type width: int
+        """
         self._vertical_offset = len(self.BORDER['vertical'])
         self._horizontal_offset = len(self.BORDER['horizontal'])
 
         if height <= self._vertical_offset or width <= self._horizontal_offset:
-            raise Exception('Bad dimension; min 2x2')
+            raise ValueError('Bad dimension; min 2x2')
 
         self._chart_height = height
         self._chart_width = width
@@ -37,13 +43,20 @@ class ChartRenderer:
         self._vertical_resolution = self._height * self._block_resolution
         self._horizontal_resolution = self._width
 
-    def render(self, values: list) -> tuple:
+    def render(self, values):
+        """
+        :type values: list
+        :rtype: tuple[str or unicode]
+        """
         output_buffer = self._get_empty_buffer()
         if values:
             self._render_bars(values, output_buffer)
         return self._convert_buffer_to_tuple_of_lines(output_buffer)
 
-    def _get_empty_buffer(self) -> list:
+    def _get_empty_buffer(self):
+        """
+        :rtype: list[str or unicode]
+        """
         buffer = []
 
         for i in range(self._height):
@@ -52,7 +65,11 @@ class ChartRenderer:
 
         return buffer
 
-    def _render_bars(self, values: list, output_buffer: list):
+    def _render_bars(self, values, output_buffer):
+        """
+        :type values: list
+        :type output_buffer: list[str or unicode]
+        """
         normalized_values = self._normalize_values(values)
 
         x = 0
@@ -66,10 +83,20 @@ class ChartRenderer:
                 self._block_writer(x, y, int(round(value, 0)), output_buffer)
             x += 1
 
-    def _block_writer(self, x: int, y: int, block_variant: int, output_buffer: list):
+    def _block_writer(self, x, y, block_variant, output_buffer):
+        """
+        :type x: int
+        :type y: int
+        :type block_variant: int
+        :type output_buffer: list[str or unicode]
+        """
         output_buffer[self._height - 1 - y][x + self._horizontal_offset] = self.BLOCK_VARIANTS[block_variant]
 
-    def _normalize_values(self, values: list) -> list:
+    def _normalize_values(self, values):
+        """
+        :type values: list
+        :rtype: list
+        """
         minimum = min(values)
         value_range = max(values) - minimum
 
@@ -83,17 +110,31 @@ class ChartRenderer:
 
         return values
 
-    def _convert_buffer_to_tuple_of_lines(self, output_buffer: list) -> tuple:
-        return tuple(''.join(row) for row in output_buffer)
+    def _convert_buffer_to_tuple_of_lines(self, output_buffer):
+        """
+        :type output_buffer: list[str or unicode]
+        :rtype: tuple
+        """
+        return tuple(u''.join(row) for row in output_buffer)
 
 
-class DataManipulation:
+class DataManipulation(object):
     @classmethod
-    def shift_values(cls, values: list, shift: float) -> list:
+    def shift_values(cls, values, shift):
+        """
+        :type values: list
+        :type shift: float
+        :rtype: list
+        """
         return [value + shift for value in values]
 
     @classmethod
-    def horizontal_scale_values(cls, values: list, new_width: int) -> list:
+    def horizontal_scale_values(cls, values, new_width):
+        """
+        :type values: list
+        :type new_width: int
+        :rtype: list
+        """
         if new_width == 0:
             return []
         if new_width == 1:
@@ -102,7 +143,12 @@ class DataManipulation:
         return cls._horizontal_scale_values_with_interpolation(values, new_width)
 
     @classmethod
-    def _horizontal_scale_values_with_interpolation(cls, values: list, new_width: int) -> list:
+    def _horizontal_scale_values_with_interpolation(cls, values, new_width):
+        """
+        :type values: list
+        :type new_width: int
+        :rtype: list
+        """
         old_point_count = len(values)
         if old_point_count == new_width:
             return values
@@ -121,5 +167,10 @@ class DataManipulation:
         return list(new_y_points)
 
     @classmethod
-    def vertical_scale_values(cls, values: list, scale: float) -> list:
+    def vertical_scale_values(cls, values, scale):
+        """
+        :type values: list
+        :type scale: float
+        :rtype: list
+        """
         return [value * scale for value in values]

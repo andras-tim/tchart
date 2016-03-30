@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import os
 import sys
 from setuptools import setup, find_packages
@@ -11,7 +11,7 @@ class PyTest(TestCommand):
     test_suite = None
 
     def initialize_options(self):
-        super().initialize_options()
+        TestCommand.initialize_options(self)
         self.pytest_args = ''
         self.test_args = []
         self.test_suite = True
@@ -34,7 +34,7 @@ setup(
     name='tchart',
     version='1.0.1',
     url='https://github.com/andras-tim/tchart',
-    license='GPLv2',
+    license='GPLv3',
     author='Andras Tim',
     author_email='andras.tim@gmail.com',
     platforms='any',
@@ -45,7 +45,8 @@ setup(
         "Development Status :: 5 - Production/Stable",
         'Intended Audience :: Developers',
         'Topic :: Scientific/Engineering :: Visualization',
-        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
     ],
     keywords='chart bar barchart',
