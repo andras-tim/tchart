@@ -104,7 +104,7 @@ reports=yes
 
 # Good variable names which should always be accepted, separated by a comma
 #good-names=i,j,k,ex,Run,_
-good-names=k,v,e,fd,r,_
+good-names=k,v,e,fd,t,x,y,_
 
 # Bad variable names which should always be refused, separated by a comma
 #bad-names=foo,bar,baz,toto,tutu,tata
@@ -333,6 +333,7 @@ max-line-length=120
 
 # Maximum number of arguments for function / method
 #max-args=5
+max-args=6
 
 # Argument names that match this expression will be ignored. Default to name
 # with leading underscore
@@ -354,7 +355,7 @@ max-line-length=120
 #max-parents=7
 
 # Maximum number of attributes for a class (see R0902).
-#max-attributes=7
+max-attributes=8
 
 # Minimum number of public methods for a class (see R0903).
 #min-public-methods=2

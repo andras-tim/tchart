@@ -3,119 +3,112 @@
 from __future__ import division
 import numpy
 
+from .renderers import BoxRenderer
+from .decorators import AxisDecorator
 
-class ChartRenderer(object):
-    BORDER = {
-        'vertical': u'│',
-        'horizontal': u'─',
-        'crossing': u'┼'
-    }
-    BLOCK_VARIANTS = (
-        u' ',
-        u'▁',
-        u'▂',
-        u'▃',
-        u'▄',
-        u'▅',
-        u'▆',
-        u'▇',
-        u'█',
-    )
+DEFAULT_RENDERER = BoxRenderer()
+DEFAULT_DECORATORS = (AxisDecorator(), )
 
-    def __init__(self, height=5, width=10):
+
+class Tchart(object):
+    def __init__(self, width=10, height=5, renderer=DEFAULT_RENDERER, decorators=DEFAULT_DECORATORS):
         """
-        :type height: int
+        :param width: Canvas width
         :type width: int
+        :param height: Canvas height
+        :type height: int
+        :type renderer: tchart.renderers.ChartRenderer
+        :type decorators: tuple[tchart.decorators.ChartDecorator] or list[tchart.decorators.ChartDecorator] or None
         """
-        self._vertical_offset = len(self.BORDER['vertical'])
-        self._horizontal_offset = len(self.BORDER['horizontal'])
+        self._canvas_width = width
+        self._canvas_height = height
+        self._chart_renderer = renderer
+        self._decorators = decorators or ()
 
-        if height <= self._vertical_offset or width <= self._horizontal_offset:
-            raise ValueError('Bad dimension; min 2x2')
+        margin_left = margin_top = margin_right = margin_bottom = 0
+        if decorators:
+            margin_left = sum([decorator.width_left for decorator in decorators])
+            margin_top = sum([decorator.width_top for decorator in decorators])
+            margin_right = sum([decorator.width_right for decorator in decorators])
+            margin_bottom = sum([decorator.width_bottom for decorator in decorators])
 
-        self._chart_height = height
-        self._chart_width = width
+        margin_horizontal = margin_left + margin_right
+        margin_vertical = margin_top + margin_bottom
 
-        self._height = height - self._vertical_offset
-        self._width = width - self._horizontal_offset
+        self._chart_width = self._canvas_width - margin_horizontal
+        self._chart_height = self._canvas_height - margin_vertical
+        self._chart_resolution_horizontal = self._chart_width * self._chart_renderer.char_resolution_horizontal
+        self._chart_resolution_vertical = self._chart_height * self._chart_renderer.char_resolution_vertical
 
-        self._block_resolution = len(self.BLOCK_VARIANTS) - 1
-        self._vertical_resolution = self._height * self._block_resolution
-        self._horizontal_resolution = self._width
+        if self._chart_width < 1 or self._chart_height < 1:
+            raise ValueError('Bad dimension; min {min_width}x{min_height}'.format(
+                min_width=margin_horizontal + 1,
+                min_height=margin_vertical + 1,
+            ))
 
     def render(self, values):
         """
         :type values: list
         :rtype: tuple[str or unicode]
         """
-        output_buffer = self._get_empty_buffer()
-        if values:
-            self._render_bars(values, output_buffer)
-        return self._convert_buffer_to_tuple_of_lines(output_buffer)
-
-    def _get_empty_buffer(self):
-        """
-        :rtype: list[str or unicode]
-        """
-        buffer = []
-
-        for i in range(self._height):
-            buffer += [[self.BORDER['vertical']] + [self.BLOCK_VARIANTS[0]] * self._width]
-        buffer += [[self.BORDER['crossing']] + [self.BORDER['horizontal']] * self._width]
-
-        return buffer
-
-    def _render_bars(self, values, output_buffer):
-        """
-        :type values: list
-        :type output_buffer: list[str or unicode]
-        """
         normalized_values = self._normalize_values(values)
 
-        x = 0
-        for value in normalized_values:
-            y = 0
-            while value > self._block_resolution:
-                self._block_writer(x, y, self._block_resolution, output_buffer)
-                value -= self._block_resolution
-                y += 1
-            if value > 0:
-                self._block_writer(x, y, int(round(value, 0)), output_buffer)
-            x += 1
+        lines = self._chart_renderer.render(width=self._chart_width, height=self._chart_height,
+                                            values=normalized_values)
 
-    def _block_writer(self, x, y, block_variant, output_buffer):
+        for decorator in self._decorators:
+            lines = decorator.decorate(lines=lines)
+
+        return lines
+
+    @property
+    def canvas_width(self):
         """
-        :type x: int
-        :type y: int
-        :type block_variant: int
-        :type output_buffer: list[str or unicode]
+        :rtype: int
         """
-        output_buffer[self._height - 1 - y][x + self._horizontal_offset] = self.BLOCK_VARIANTS[block_variant]
+        return self._canvas_width
+
+    @property
+    def canvas_height(self):
+        """
+        :rtype: int
+        """
+        return self._canvas_height
+
+    @property
+    def chart_width(self):
+        """
+        :rtype: int
+        """
+        return self._chart_width
+
+    @property
+    def chart_height(self):
+        """
+        :rtype: int
+        """
+        return self._chart_height
 
     def _normalize_values(self, values):
         """
         :type values: list
         :rtype: list
         """
+        if not values:
+            return []
+
         minimum = min(values)
         value_range = max(values) - minimum
 
         vertical_scale = 1
-        if value_range:
-            vertical_scale = self._vertical_resolution / value_range
+        if value_range > 1:
+            vertical_scale = self._chart_resolution_vertical / value_range
 
         values = DataManipulation.shift_values(values, -minimum)
-        values = DataManipulation.horizontal_scale_values(values, self._horizontal_resolution)
+        values = DataManipulation.horizontal_scale_values(values, self._chart_resolution_horizontal)
         values = DataManipulation.vertical_scale_values(values, vertical_scale)
 
         return values
-
-    def _convert_buffer_to_tuple_of_lines(self, output_buffer):
-        """
-        :type output_buffer: list[str or unicode]
-        :rtype: tuple
-        """
-        return tuple(u''.join(row) for row in output_buffer)
 
 
 class DataManipulation(object):

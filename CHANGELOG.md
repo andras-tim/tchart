@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [Unreleased][unreleased]
+### Changed
+- changed signature of **tchart**!
+- refactored ChartRenderer for separate chart renderer and chart decorator
+    - name of current renderer is **box**, and current decorator is **axis**
 
 
 ## [1.1.0] - 2016-03-30
