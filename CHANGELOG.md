@@ -5,8 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 ### Added
-- added some decorators ( **frame**, **thin frame**, **double frame**, **paper** )
-- added one renderer ( **sharp** )
+- added decorators: **frame**, **thin frame**, **double frame**, **paper**
+- added renderers: **sharp**, **drawille**
 
 ### Changed
 - changed signature of **tchart**!

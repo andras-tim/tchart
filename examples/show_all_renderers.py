@@ -6,12 +6,13 @@ from collections import OrderedDict
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from tchart import Tchart
-from tchart.renderers import BoxRenderer, SharpRenderer
+from tchart.renderers import BoxRenderer, SharpRenderer, DrawilleRenderer
 
 
 RENDERERS = OrderedDict((
     ('BoxRenderer - default', BoxRenderer()),
     ('SharpRenderer', SharpRenderer()),
+    ('DrawilleRenderer', DrawilleRenderer()),
 ))
 
 
