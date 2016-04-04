@@ -50,11 +50,14 @@ Examples
 
 Please check the `examples <https://github.com/andras-tim/tchart/tree/master/examples>`__ directory.
 
-|Example1|
+* ``examples/show_all_renderers.py``
+    |Renderers|
 
-|Example2|
+* ``examples/show_all_decorators.py``
+    |Decorators|
 
-|Example3|
+* ``examples/show_stacked_decorators.py``
+    |StackedDecorators|
 
 
 Bugs
@@ -87,12 +90,12 @@ Bugs or suggestions? Visit the `issue tracker <https://github.com/andras-tim/tch
    :target: http://issuestats.com/github/andras-tim/tchart
    :alt: Issue Stats
 
-.. |Example1| image:: https://raw.githubusercontent.com/andras-tim/tchart/master/examples/screenshots/random1.png
+.. |Renderers| image:: https://raw.githubusercontent.com/andras-tim/tchart/master/examples/screenshots/renderers.png
    :target: https://github.com/andras-tim/tchart/tree/master/examples
-   :alt: Random chart
-.. |Example2| image:: https://raw.githubusercontent.com/andras-tim/tchart/master/examples/screenshots/random2.png
+   :alt: Renderers
+.. |Decorators| image:: https://raw.githubusercontent.com/andras-tim/tchart/master/examples/screenshots/decorators.png
    :target: https://github.com/andras-tim/tchart/tree/master/examples
-   :alt: Random chart 2
-.. |Example3| image:: https://raw.githubusercontent.com/andras-tim/tchart/master/examples/screenshots/random3.png
+   :alt: Decorators
+.. |StackedDecorators| image:: https://raw.githubusercontent.com/andras-tim/tchart/master/examples/screenshots/stacked_decorators.png
    :target: https://github.com/andras-tim/tchart/tree/master/examples
-   :alt: Random chart 3
+   :alt: StackedDecorators
