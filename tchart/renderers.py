@@ -86,3 +86,12 @@ class BoxRenderer(ChartRenderer):
         :type output_buffer: list[list[str or unicode]]
         """
         output_buffer[y][x] = self.BLOCKS[block_variant]
+
+
+class SharpRenderer(BoxRenderer):
+    BLOCKS = (
+        u' ',  # 0
+        u'.',  # 1
+        u'x',  # 2
+        u'#',  # 3
+    )

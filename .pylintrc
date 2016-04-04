@@ -104,7 +104,7 @@ reports=yes
 
 # Good variable names which should always be accepted, separated by a comma
 #good-names=i,j,k,ex,Run,_
-good-names=k,v,e,fd,t,x,y,_
+good-names=i,k,v,e,fd,t,x,y,_
 
 # Bad variable names which should always be refused, separated by a comma
 #bad-names=foo,bar,baz,toto,tutu,tata
