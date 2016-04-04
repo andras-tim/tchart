@@ -15,15 +15,34 @@ Installation
 Usage
 -----
 
-.. code-block:: python
+* simple way:
 
-    from tchart.tchart import ChartRenderer
+    .. code-block:: python
 
-    renderer_object = ChartRenderer(height=10, width=80)
-    data = [12.1, -2, 100]
+        from tchart import Tchart
 
-    chart_string = renderer_object.render(data)
-    print(chart_string)
+        t = Tchart(height=10, width=80)
+
+        data = [12.1, -2, 100]
+        chart = t.render(data)
+
+        print('\n'.join(chart))
+
+
+* extended way:
+
+    .. code-block:: python
+
+        from tchart import Tchart
+        from tchart.renderers import BoxRenderer
+        from tchart.decorators import AxisDecorator
+
+        t = Tchart(height=10, width=80, renderer=BoxRenderer(), decorators=[AxisDecorator(), ])
+
+        data = [12.1, -2, 100]
+        chart = t.render(data)
+
+        print('\n'.join(chart))
 
 
 Examples

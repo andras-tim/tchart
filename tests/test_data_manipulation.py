@@ -26,6 +26,9 @@ class TestDataManipulation(object):
         assert h_scale([0, 1, 2, 3], 7) == [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
         assert h_scale([0, 1, 2, 3], 13) == [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0]
 
+        assert h_scale([0.0, 0.1, 0.2, 0.3, 0.4], 5) == [0.0, 0.1, 0.2, 0.3, 0.4]
+        assert h_scale(range(1000), 10) == [111 * i for i in range(10)]
+
     def test_vertical_scale_values(self):
         v_scale = DataManipulation.vertical_scale_values
 
