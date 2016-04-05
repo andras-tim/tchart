@@ -68,12 +68,13 @@ class BoxRenderer(ChartRenderer):
         resolution = self.char_resolution_vertical
         for value in values:
             y = 0
+            value = int(round(value, 0))
             while value > resolution:
                 self._block_writer(x, y, resolution, output_buffer)
                 value -= resolution
                 y += 1
             if value > 0:
-                self._block_writer(x, y, int(round(value, 0)), output_buffer)
+                self._block_writer(x, y, value, output_buffer)
             x += 1
 
         return [u''.join(line) for line in reversed(output_buffer)]

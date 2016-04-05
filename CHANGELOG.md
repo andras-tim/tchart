@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [Unreleased][unreleased]
+### Changed
+- fixed IndexError in BoxRenderer & SharpRenderer
 
 
 ## [2.0.0] - 2016-04-04
