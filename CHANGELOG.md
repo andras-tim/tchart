@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - fixed IndexError in BoxRenderer & SharpRenderer
+- updated development dependencies
 
 
 ## [2.0.0] - 2016-04-04
