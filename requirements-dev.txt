@@ -1,7 +1,7 @@
 cursor>=1.2.0,<1.3
 drawille>=0.1.0,<0.2
 flake8>=3.6.0,<3.7
-pytest>=3.9.3,<3.10
+pytest>=3.10.0,<3.11
 pytest-cache>=1.0,<1.1
 pytest-cov>=2.6.0,<2.7
 pytest-flake8>=1.0.2,<1.1
