@@ -5,7 +5,7 @@ import random
 import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import tchart
+import tchart  # noqa: E402
 
 
 t = tchart.Tchart(height=18, width=120,
