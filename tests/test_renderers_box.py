@@ -49,3 +49,8 @@ from tchart.renderers import BoxRenderer
 def test_render(width, height, values, expected_lines):
     renderer = BoxRenderer()
     assert renderer.render(width=width, height=height, values=values) == expected_lines
+
+
+def test_does_not_raise_index_error():
+    renderer = BoxRenderer()
+    renderer.render(width=1, height=1, values=[8.1])

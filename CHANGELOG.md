@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [Unreleased][unreleased]
+### Added
+- added animated example script with Drawille chart on Paper decorator
+
+### Changed
+- fixed IndexError in BoxRenderer & SharpRenderer
+- updated development dependencies
 
 
 ## [2.0.0] - 2016-04-04

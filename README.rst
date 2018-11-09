@@ -67,10 +67,10 @@ Bugs or suggestions? Visit the `issue tracker <https://github.com/andras-tim/tch
 
 
 .. |Build| image:: https://travis-ci.org/andras-tim/tchart.svg?branch=master
-   :target: https://travis-ci.org/andras-tim/tchart
+   :target: https://travis-ci.org/andras-tim/tchart/branches
    :alt: Build Status
-.. |DependencyStatus| image:: https://gemnasium.com/andras-tim/tchart.svg
-   :target: https://gemnasium.com/andras-tim/tchart
+.. |DependencyStatus| image:: https://requires.io/github/andras-tim/tchart/requirements.svg?branch=master
+   :target: https://requires.io/github/andras-tim/tchart/requirements/?branch=master
    :alt: Dependency Status
 .. |PyPi| image:: https://img.shields.io/pypi/dm/tchart.svg
    :target: https://pypi.python.org/pypi/tchart

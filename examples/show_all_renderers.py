@@ -5,8 +5,8 @@ import sys
 from collections import OrderedDict
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from tchart import Tchart
-from tchart.renderers import BoxRenderer, SharpRenderer, DrawilleRenderer
+from tchart import Tchart  # noqa: E402
+from tchart.renderers import BoxRenderer, SharpRenderer, DrawilleRenderer  # noqa: E402
 
 
 RENDERERS = OrderedDict((

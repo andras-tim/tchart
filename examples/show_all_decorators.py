@@ -5,8 +5,9 @@ import sys
 from collections import OrderedDict
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from tchart import Tchart
-from tchart.decorators import AxisDecorator, FrameDecorator, ThinFrameDecorator, DoubleFrameDecorator, PaperDecorator
+from tchart import Tchart  # noqa: E402
+from tchart.decorators import AxisDecorator, FrameDecorator, ThinFrameDecorator, DoubleFrameDecorator, \
+                              PaperDecorator  # noqa: E402
 
 
 DECORATORS = OrderedDict((
